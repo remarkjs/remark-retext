@@ -1,0 +1,60 @@
+{
+  "name": "remark-retext",
+  "version": "0.0.0",
+  "description": "retext support for remark",
+  "license": "MIT",
+  "keywords": [
+    "markdown",
+    "mdast",
+    "remark",
+    "natural",
+    "language",
+    "nlcst",
+    "retext"
+  ],
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooorm/remark-retext.git"
+  },
+  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "dependencies": {
+    "mdast-util-to-nlcst": "^1.0.0",
+    "unified-bridge": "^1.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "eslint": "^1.0.0",
+    "esmangle": "^1.0.0",
+    "istanbul": "^0.4.0",
+    "jscs": "^2.0.0",
+    "jscs-jsdoc": "^1.0.0",
+    "remark": "^3.0.0",
+    "remark-comment-config": "^2.0.2",
+    "remark-github": "^2.0.0",
+    "remark-html": "^2.0.2",
+    "remark-lint": "^2.0.2",
+    "remark-slug": "^3.0.1",
+    "remark-validate-links": "^2.0.2",
+    "remark-yaml-config": "^2.0.0",
+    "retext": "^1.0.0",
+    "retext-equality": "^1.6.4",
+    "tape": "^4.0.0",
+    "vfile": "^1.2.0",
+    "vfile-reporter": "^1.5.0"
+  },
+  "scripts": {
+    "build-md": "remark . --quiet --frail",
+    "build-bundle": "browserify index.js --bare -s remarkRetext > remark-retext.js",
+    "build-mangle": "esmangle remark-retext.js > remark-retext.min.js",
+    "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
+    "lint-api": "eslint .",
+    "lint-style": "jscs --reporter inline .",
+    "lint": "npm run lint-api && npm run lint-style",
+    "test-api": "node test.js",
+    "test-coverage": "istanbul cover test.js",
+    "test": "npm run build && npm run lint && npm run test-coverage"
+  }
+}

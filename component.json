@@ -1,0 +1,23 @@
+{
+  "name": "remark-retext",
+  "version": "0.0.0",
+  "description": "retext support for remark",
+  "license": "MIT",
+  "keywords": [
+    "markdown",
+    "mdast",
+    "remark",
+    "natural",
+    "language",
+    "nlcst",
+    "retext"
+  ],
+  "repository": "wooorm/remark-retext",
+  "dependencies": {
+    "wooorm/mdast-util-to-nlcst": "^1.0.0",
+    "wooorm/unified-bridge": "^1.0.0"
+  },
+  "scripts": [
+    "index.js"
+  ]
+}
