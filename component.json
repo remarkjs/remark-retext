@@ -14,7 +14,7 @@
   ],
   "repository": "wooorm/remark-retext",
   "dependencies": {
-    "wooorm/mdast-util-to-nlcst": "^1.0.0",
+    "wooorm/mdast-util-to-nlcst": "^2.0.0",
     "wooorm/unified-bridge": "^1.0.0"
   },
   "scripts": [

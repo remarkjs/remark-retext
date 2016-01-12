@@ -21,7 +21,7 @@
   },
   "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
   "dependencies": {
-    "mdast-util-to-nlcst": "^1.0.0",
+    "mdast-util-to-nlcst": "^2.0.0",
     "unified-bridge": "^1.0.0"
   },
   "devDependencies": {
