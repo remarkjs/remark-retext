@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings -->
 
+2.0.0 / 2016-06-22
+==================
+
+*   Add support for mutating; refactor module ([`3f5e85a`](https://github.com/wooorm/remark-retext/commit/3f5e85a))
+
 1.1.0 / 2016-01-12
 ==================
 
