@@ -4,13 +4,10 @@
   "description": "retext support for remark",
   "license": "MIT",
   "keywords": [
-    "markdown",
-    "mdast",
     "remark",
-    "natural",
-    "language",
-    "nlcst",
-    "retext"
+    "retext",
+    "mdast",
+    "nlcst"
   ],
   "files": [
     "index.js"
@@ -19,30 +16,33 @@
     "type": "git",
     "url": "https://github.com/wooorm/remark-retext.git"
   },
+  "bugs": "https://github.com/wooorm/remark-retext/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+  ],
   "dependencies": {
-    "mdast-util-to-nlcst": "^2.0.0",
-    "unified-bridge": "^1.0.0"
+    "mdast-util-to-nlcst": "^3.0.0"
   },
   "devDependencies": {
-    "browserify": "^13.0.0",
-    "eslint": "^1.0.0",
-    "esmangle": "^1.0.0",
+    "browserify": "^13.0.1",
+    "eslint": "^2.0.0",
+    "esmangle": "^1.0.1",
     "istanbul": "^0.4.0",
-    "jscs": "^2.0.0",
-    "jscs-jsdoc": "^1.0.0",
-    "remark": "^3.0.0",
-    "remark-comment-config": "^2.0.2",
-    "remark-github": "^2.0.0",
-    "remark-html": "^2.0.2",
-    "remark-lint": "^2.0.2",
-    "remark-slug": "^3.0.1",
-    "remark-validate-links": "^2.0.2",
-    "remark-yaml-config": "^2.0.0",
-    "retext": "^1.0.0",
-    "retext-equality": "^1.6.4",
+    "jscs": "^3.0.0",
+    "jscs-jsdoc": "^2.0.0",
+    "remark-cli": "^1.0.0",
+    "remark-comment-config": "^4.0.0",
+    "remark-github": "^5.0.0",
+    "remark-lint": "^4.0.0",
+    "remark-parse": "^1.0.0",
+    "remark-stringify": "^1.0.0",
+    "remark-validate-links": "^4.0.0",
+    "retext-english": "^2.0.0",
+    "retext-equality": "^2.3.0",
+    "retext-stringify": "^1.0.0",
     "tape": "^4.0.0",
-    "vfile": "^1.2.0",
+    "unified": "^4.1.2",
     "vfile-reporter": "^1.5.0"
   },
   "scripts": {

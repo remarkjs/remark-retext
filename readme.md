@@ -1,6 +1,8 @@
 # remark-retext [![Build Status][travis-badge]][travis] [![Coverage Status][codecov-badge]][codecov]
 
-[**retext**][retext] support for [**remark**][remark].
+<!--lint disable heading-increment list-item-spacing-->
+
+Bridge / mutate from [**remark**][remark] to [**retext**][retext].
 
 ## Installation
 
@@ -10,55 +12,61 @@
 npm install remark-retext
 ```
 
-**remark-retext** is also available for [duo][duo-install], and as an
-AMD, CommonJS, and globals module, [uncompressed and compressed][releases].
-
 ## Usage
 
-```js
-var remark = require('remark');
-var retext = require('retext');
-var report = require('vfile-reporter');
+```javascript
+var unified = require('unified');
+var parse = require('remark-parse');
 var lint = require('remark-lint');
-var html = require('remark-html');
-var equality = require('retext-equality');
 var remark2retext = require('remark-retext');
+var english = require('retext-english');
+var equality = require('retext-equality');
+var stringify = require('remark-stringify');
+var report = require('vfile-reporter');
 
-remark()
+unified()
+    .use(parse)
     .use(lint)
-    .use(remark2retext, retext().use(equality))
-    .use(html)
-    .process('## Hey guys\n', function (err, file, doc) {
-        if (err) {
-            throw err;
-        } else {
-            process.stderr.write(report(file) + '\n');
-            process.stdout.write(doc);
-        }
+    .use(remark2retext, unified().use(english).use(equality))
+    .use(stringify)
+    .process('## Hello guys!', function (err, file) {
+        file.filename = 'example';
+        file.extension = 'md';
+        process.stderr.write(report(file) + '\n');
     });
 ```
 
-Yields:
+**stderr**(4) yields:
 
 ```txt
-<stdin>
-   1:1-1:12  warning  First heading level should be `1`                                    first-heading-level
-   1:8-1:12  warning  `guys` may be insensitive, use `people`, `persons`, `folks` instead
+example.md
+          1  warning  Missing newline character at end of file                             final-newline
+     1-1:15  warning  First heading level should be `1`                                    first-heading-level
+     1-1:15  warning  Don’t add a trailing `!` to headings                                 no-heading-punctuation
+    10-1:14  warning  `guys` may be insensitive, use `people`, `persons`, `folks` instead  gals-men
 
-⚠ 2 warnings
-<h2>Hey guys</h2>
+⚠ 4 warnings
 ```
 
 ## API
 
-### `remark.use(remark2retext, retext)`
+### `origin.use(remark2retext, destination)`
 
-[**retext**][retext] support for [**remark**][remark].
+Either bridge or mutate from [**remark**][remark] ([MDAST][]) to
+[**retext**][retext] ([NLCST][]).
 
-**Parameters**:
+###### `destination`
 
-*   `remark2retext` — This plug-in;
-*   `retext` ([`Processor`][retext]).
+`destination` is either a parser or a processor.
+
+If a [`Unified`][processor] processor is given, runs the destination
+processor with the new NLCST tree, then, after running discards that
+tree and continues on running the origin processor with the original
+tree ([bridge-mode][bridge]).
+
+If a parser (such as [**parse-latin**][latin], [**parse-english**][english],
+or [**parse-dutch**][dutch]) is given, passes the tree to further
+plug-ins (mutate-mode).
 
 ## License
 
@@ -66,24 +74,34 @@ Yields:
 
 <!-- Definitions -->
 
-[remark]: https://github.com/wooorm/remark
-
-[retext]: https://github.com/wooorm/retext
-
 [travis-badge]: https://img.shields.io/travis/wooorm/remark-retext.svg
 
 [travis]: https://travis-ci.org/wooorm/remark-retext
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/remark.svg
+[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/remark-retext.svg
 
-[codecov]: https://codecov.io/github/wooorm/remark
+[codecov]: https://codecov.io/github/wooorm/remark-retext
 
 [npm-install]: https://docs.npmjs.com/cli/install
-
-[duo-install]: http://duojs.org/#getting-started
-
-[releases]: https://github.com/wooorm/remark-retext/releases
 
 [license]: LICENSE
 
 [author]: http://wooorm.com
+
+[mdast]: https://github.com/wooorm/mdast
+
+[remark]: https://github.com/wooorm/remark
+
+[retext]: https://github.com/wooorm/retext
+
+[processor]: https://github.com/wooorm/unified#processor
+
+[bridge]: https://github.com/wooorm/unified#bridge
+
+[nlcst]: https://github.com/wooorm/nlcst
+
+[latin]: https://github.com/wooorm/parse-latin
+
+[english]: https://github.com/wooorm/parse-english
+
+[dutch]: https://github.com/wooorm/parse-dutch
