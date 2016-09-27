@@ -1,12 +1,10 @@
 # remark-retext [![Build Status][travis-badge]][travis] [![Coverage Status][codecov-badge]][codecov]
 
-<!--lint disable heading-increment list-item-spacing-->
-
 Bridge / mutate from [**remark**][remark] to [**retext**][retext].
 
 ## Installation
 
-[npm][npm-install]:
+[npm][]:
 
 ```bash
 npm install remark-retext
@@ -82,7 +80,7 @@ plug-ins (mutate-mode).
 
 [codecov]: https://codecov.io/github/wooorm/remark-retext
 
-[npm-install]: https://docs.npmjs.com/cli/install
+[npm]: https://docs.npmjs.com/cli/install
 
 [license]: LICENSE
 
