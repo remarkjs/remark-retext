@@ -1,14 +1,5 @@
-/**
- * @author Titus Wormer
- * @copyright 2016 Titus Wormer
- * @license MIT
- * @module remark-retext
- * @fileoverview Test suite for `remark-retext`.
- */
-
 'use strict';
 
-/* Dependencies. */
 var test = require('tape');
 var unified = require('unified');
 var parse = require('remark-parse');
@@ -17,7 +8,6 @@ var markdown = require('remark-stringify');
 var naturalLanguage = require('retext-stringify');
 var remark2retext = require('./index.js');
 
-/* Tests. */
 test('remark2retext()', function (t) {
   t.equal(
     unified()
