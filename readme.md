@@ -15,7 +15,6 @@ npm install remark-retext
 ```javascript
 var unified = require('unified');
 var parse = require('remark-parse');
-var lint = require('remark-lint');
 var remark2retext = require('remark-retext');
 var english = require('retext-english');
 var equality = require('retext-equality');
@@ -23,27 +22,20 @@ var stringify = require('remark-stringify');
 var report = require('vfile-reporter');
 
 unified()
-    .use(parse)
-    .use(lint)
-    .use(remark2retext, unified().use(english).use(equality))
-    .use(stringify)
-    .process('## Hello guys!', function (err, file) {
-        file.filename = 'example';
-        file.extension = 'md';
-        process.stderr.write(report(file) + '\n');
-    });
+  .use(parse)
+  .use(remark2retext, unified().use(english).use(equality))
+  .use(stringify)
+  .process('## Hello guys!', function (err, file) {
+    console.error(report(err || file));
+  });
 ```
 
 **stderr**(4) yields:
 
 ```txt
-example.md
-          1  warning  Missing newline character at end of file                             final-newline
-     1-1:15  warning  First heading level should be `1`                                    first-heading-level
-     1-1:15  warning  Don’t add a trailing `!` to headings                                 no-heading-punctuation
-    10-1:14  warning  `guys` may be insensitive, use `people`, `persons`, `folks` instead  gals-men
+  1:10-1:14  warning  `guys` may be insensitive, use `people`, `persons`, `folks` instead  gals-men  retext-equality
 
-⚠ 4 warnings
+⚠ 1 warning
 ```
 
 ## API
