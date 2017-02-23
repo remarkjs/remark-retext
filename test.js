@@ -14,7 +14,7 @@ test('remark2retext()', function (t) {
       .use(parse)
       .use(remark2retext, english.Parser)
       .use(naturalLanguage)
-      .process('## Hello, world! ##')
+      .processSync('## Hello, world! ##')
       .toString(),
     'Hello, world!',
     'should mutate'
@@ -25,7 +25,7 @@ test('remark2retext()', function (t) {
       .use(parse)
       .use(remark2retext, unified().use(english))
       .use(markdown)
-      .process('## Hello, world! ##')
+      .processSync('## Hello, world! ##')
       .toString(),
     '## Hello, world!\n',
     'should bridge'
