@@ -26,7 +26,7 @@
     "esmangle": "^1.0.1",
     "nyc": "^10.0.0",
     "remark-cli": "^2.0.0",
-    "remark-parse": "^2.0.0",
+    "remark-parse": "^3.0.0",
     "remark-preset-wooorm": "^1.0.0",
     "remark-stringify": "^2.0.0",
     "retext-english": "^2.0.0",
