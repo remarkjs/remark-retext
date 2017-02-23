@@ -32,7 +32,7 @@
     "retext-english": "^2.0.0",
     "retext-stringify": "^1.0.0",
     "tape": "^4.0.0",
-    "unified": "^5.0.0",
+    "unified": "^6.0.0",
     "xo": "^0.17.1"
   },
   "scripts": {
