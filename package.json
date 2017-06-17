@@ -9,14 +9,14 @@
     "mdast",
     "nlcst"
   ],
-  "files": [
-    "index.js"
-  ],
-  "repository": "https://github.com/wooorm/remark-retext",
+  "repository": "wooorm/remark-retext",
   "bugs": "https://github.com/wooorm/remark-retext/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+  ],
+  "files": [
+    "index.js"
   ],
   "dependencies": {
     "mdast-util-to-nlcst": "^3.0.0"
@@ -59,6 +59,8 @@
     ]
   },
   "remarkConfig": {
-    "plugins": ["preset-wooorm"]
+    "plugins": [
+      "preset-wooorm"
+    ]
   }
 }
