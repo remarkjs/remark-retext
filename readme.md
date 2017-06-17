@@ -68,6 +68,15 @@ If a parser (such as [**parse-latin**][latin], [**parse-english**][english],
 or [**parse-dutch**][dutch]) is given, passes the tree to further
 plug-ins (mutate-mode).
 
+## Related
+
+*   [`rehype-retext`](https://github.com/wooorm/rehype-retext)
+    — Transform HTML to [NLCST][]
+*   [`remark-rehype`](https://github.com/wooorm/remark-rehype)
+    — Transform markdown to HTML
+*   [`rehype-remark`](https://github.com/wooorm/rehype-remark)
+    — Transform HTML to markdown
+
 ## License
 
 [MIT][license] © [Titus Wormer][author]
