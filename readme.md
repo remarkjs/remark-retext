@@ -12,27 +12,37 @@ npm install remark-retext
 
 ## Usage
 
+Say we have the following file, `example.md`:
+
+```markdown
+## Hello guys!
+```
+
+And our script, `example.js`, looks as follows:
+
 ```javascript
+var vfile = require('to-vfile');
+var report = require('vfile-reporter');
 var unified = require('unified');
 var parse = require('remark-parse');
+var stringify = require('remark-stringify');
 var remark2retext = require('remark-retext');
 var english = require('retext-english');
 var equality = require('retext-equality');
-var stringify = require('remark-stringify');
-var report = require('vfile-reporter');
 
 unified()
   .use(parse)
   .use(remark2retext, unified().use(english).use(equality))
   .use(stringify)
-  .process('## Hello guys!', function (err, file) {
+  .process(vfile.readSync('example.md'), function (err, file) {
     console.error(report(err || file));
   });
 ```
 
-**stderr**(4) yields:
+Now, running `node example` yields:
 
-```txt
+```text
+example.md
   1:10-1:14  warning  `guys` may be insensitive, use `people`, `persons`, `folks` instead  gals-men  retext-equality
 
 ⚠ 1 warning
