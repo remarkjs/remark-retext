@@ -19,7 +19,7 @@
     "index.js"
   ],
   "dependencies": {
-    "mdast-util-to-nlcst": "^3.0.0"
+    "mdast-util-to-nlcst": "^3.2.0"
   },
   "devDependencies": {
     "browserify": "^14.0.0",

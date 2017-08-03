@@ -50,7 +50,7 @@ example.md
 
 ## API
 
-### `origin.use(remark2retext, destination)`
+### `origin.use(remark2retext, destination[, options])`
 
 Either bridge or mutate from [**remark**][remark] ([MDAST][]) to
 [**retext**][retext] ([NLCST][]).
@@ -68,6 +68,10 @@ If a parser (such as [**parse-latin**][latin], [**parse-english**][english],
 or [**parse-dutch**][dutch]) is given, passes the tree to further
 plug-ins (mutate-mode).
 
+###### `options`
+
+Passed to [`mdast-util-to-nlcst`][to-nlcst].
+
 ## Related
 
 *   [`rehype-retext`](https://github.com/wooorm/rehype-retext)
@@ -76,6 +80,8 @@ plug-ins (mutate-mode).
     — Transform markdown to HTML
 *   [`rehype-remark`](https://github.com/wooorm/rehype-remark)
     — Transform HTML to markdown
+*   [`mdast-util-to-nlcst`][to-nlcst]
+    — Underlying algorithm
 
 ## License
 
@@ -114,3 +120,5 @@ plug-ins (mutate-mode).
 [english]: https://github.com/wooorm/parse-english
 
 [dutch]: https://github.com/wooorm/parse-dutch
+
+[to-nlcst]: https://github.com/syntax-tree/mdast-util-to-nlcst
