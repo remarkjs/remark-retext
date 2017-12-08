@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - '4.0'
-- '8.0'
+- '9.0'
 after_script: bash <(curl -s https://codecov.io/bash)
 deploy:
   - provider: npm
@@ -10,7 +10,7 @@ deploy:
       secure: LxHolv6yhr1Yg7hPUu5bIj1i0kxvzxVfkTJJMBpSzCJW5YOI7Y0HQnuVLEVlL3cMvCPw0b7GHJkud0NkVynbvX2+a5xqOZlKUBUoe3s/GaR99GwI37x6KiqPXCc3CdrgYWc96YOZ4d8h67bf1WkaZvHQRM1LMiwh2kOzDcljhc9ERFpkqvjdu4EH8nnc/bpdV+ekHJMzFplx17FW6pSxjDRjTvcopCxJW/fx2KVMAKlO63TbP8BFQP46QJJOVSqldWpbTHb2Jf3MW+xItYTVgy2Mtcq5N4/ixcEJduMHj1UJa6rVi0Xup++Ux4AEkv8ZKvMmKLu9Jm9R+PDPWNgm2SOrbJmZ3zdEN2LY1F7GMwjjERpgsunQSssMC6BVfrAcPGoWOq+rwvK4oks4FmaotNhl7buIrfsl7WClGQtBe37KOziiYSH5LUTY5h1rrAjmDuwq/6suMGAoBIpEBe7WWx6mWCTo/Gx6sz7Tq/97C5RewjGqKQtKG1MbWBNMHAtUwvmrjOKJ+cwdaBFTB8UrP/LP6KN6f2TZoyDBONm+N/JOYjGKGDV6O1igR5W9HjUGuLUKJdcK8bU8zH6yViCFn3DXolU+icElKoolZO7m66UgeiCmysGj+PK/4GpLYz1GMJmJtdhx7p9gCReUzA5lz8OGMqDjGppLZEvuZpdqaZw=
     on:
       tags: true
-      node: '4.0'
+      node: '9.0'
   - provider: releases
     api_key:
       secure: omfHxj+g2O+qj2/7+nApyvA+KcS2hi+jWP8AICs8EzQrreR6Ed8wmVwzx2DD9ndmqDFyyeR2DkbwkAkYQAbMLEKFxfhvG42e8PXZUDg4sucwF73iQ/Xccac8YhZ9pXxxWkT3Oxogk5pb3Xy8MY4bmYypmiiId15m/1sepLG9FhotUAQHxFQLrwxh4gslkAfGHE1WdJOC0+wv4u5zqaDaEqV6gfv6X4y88yT0EmSOnT+8hrupy3ImgO8a96FfHXz7d74ic0u0mQ7H0uSk6y82DTLFIEzsyetyAojots12OYeJZE/7rohcEaumEBF5JvzKngsG4FXmBVnX5Mf20zo96vRGoepKjyUD1tDJO7g14QVpkXhjrCPwwsikfPnTPZjgc24CX0oxUq/G9L0ri8ZvMDMCXo6FmVerx2Sw2uB3SN8zCYlUlWg7/tz/9drkYINF6XHjv5M3WGQtVRHtkueg37IlhltZwFIG7wR+1DUytwkLj8MBomimao6AQAiHv/IkLQXa+ZRe1w5MVaoZsyaCJn9oIGcSzOBE4leirhZvIDJ/qUlmkbdO35y6G2hyVpMCgAmo3dOnhceSb3VOa7vnwJVJCySym/HmIZW7VJzyPW4WzPYjMcfNeB4I7Tn6lSy0U8pyflpLpIr3bSBg93MUWk98SgoiVmt/Yk7+v8i84rs=
@@ -19,4 +19,4 @@ deploy:
       - "remark-retext.min.js"
     on:
       tags: true
-      node: '8.0'
+      node: '9.0'
