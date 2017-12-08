@@ -9,8 +9,8 @@
     "mdast",
     "nlcst"
   ],
-  "repository": "wooorm/remark-retext",
-  "bugs": "https://github.com/wooorm/remark-retext/issues",
+  "repository": "remarkjs/remark-retext",
+  "bugs": "https://github.com/remarkjs/remark-retext/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"

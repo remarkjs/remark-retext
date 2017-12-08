@@ -74,11 +74,11 @@ Passed to [`mdast-util-to-nlcst`][to-nlcst].
 
 ## Related
 
-*   [`rehype-retext`](https://github.com/wooorm/rehype-retext)
+*   [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
     — Transform HTML to [NLCST][]
-*   [`remark-rehype`](https://github.com/wooorm/remark-rehype)
+*   [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
     — Transform markdown to HTML
-*   [`rehype-remark`](https://github.com/wooorm/rehype-remark)
+*   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
     — Transform HTML to markdown
 *   [`mdast-util-to-nlcst`][to-nlcst]
     — Underlying algorithm
@@ -89,13 +89,13 @@ Passed to [`mdast-util-to-nlcst`][to-nlcst].
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/wooorm/remark-retext.svg
+[travis-badge]: https://img.shields.io/travis/remarkjs/remark-retext.svg
 
-[travis]: https://travis-ci.org/wooorm/remark-retext
+[travis]: https://travis-ci.org/remarkjs/remark-retext
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/remark-retext.svg
+[codecov-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-retext.svg
 
-[codecov]: https://codecov.io/github/wooorm/remark-retext
+[codecov]: https://codecov.io/github/remarkjs/remark-retext
 
 [npm]: https://docs.npmjs.com/cli/install
 
@@ -103,17 +103,17 @@ Passed to [`mdast-util-to-nlcst`][to-nlcst].
 
 [author]: http://wooorm.com
 
-[mdast]: https://github.com/wooorm/mdast
+[mdast]: https://github.com/syntax-tree/mdast
 
-[remark]: https://github.com/wooorm/remark
+[remark]: https://github.com/remarkjs/remark
 
-[retext]: https://github.com/wooorm/retext
+[retext]: https://github.com/retextjs/retext
 
-[processor]: https://github.com/wooorm/unified#processor
+[processor]: https://github.com/unifiedjs/unified#processor
 
-[bridge]: https://github.com/wooorm/unified#bridge
+[bridge]: https://github.com/unifiedjs/unified#processing-between-syntaxes
 
-[nlcst]: https://github.com/wooorm/nlcst
+[nlcst]: https://github.com/syntax-tree/nlcst
 
 [latin]: https://github.com/wooorm/parse-latin
 
