@@ -6,7 +6,7 @@ var parse = require('remark-parse');
 var english = require('retext-english');
 var markdown = require('remark-stringify');
 var naturalLanguage = require('retext-stringify');
-var remark2retext = require('./index.js');
+var remark2retext = require('.');
 
 test('remark2retext()', function (t) {
   t.equal(
