@@ -1,14 +1,14 @@
-'use strict';
+'use strict'
 
-var test = require('tape');
-var unified = require('unified');
-var parse = require('remark-parse');
-var english = require('retext-english');
-var markdown = require('remark-stringify');
-var naturalLanguage = require('retext-stringify');
-var remark2retext = require('.');
+var test = require('tape')
+var unified = require('unified')
+var parse = require('remark-parse')
+var english = require('retext-english')
+var markdown = require('remark-stringify')
+var naturalLanguage = require('retext-stringify')
+var remark2retext = require('.')
 
-test('remark2retext()', function (t) {
+test('remark2retext()', function(t) {
   t.equal(
     unified()
       .use(parse)
@@ -18,7 +18,7 @@ test('remark2retext()', function (t) {
       .toString(),
     'Hello, world!',
     'should mutate'
-  );
+  )
 
   t.equal(
     unified()
@@ -29,7 +29,7 @@ test('remark2retext()', function (t) {
       .toString(),
     '## Hello, world!\n',
     'should bridge'
-  );
+  )
 
-  t.end();
-});
+  t.end()
+})

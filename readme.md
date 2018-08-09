@@ -21,22 +21,27 @@ Say we have the following file, `example.md`:
 And our script, `example.js`, looks as follows:
 
 ```javascript
-var vfile = require('to-vfile');
-var report = require('vfile-reporter');
-var unified = require('unified');
-var parse = require('remark-parse');
-var stringify = require('remark-stringify');
-var remark2retext = require('remark-retext');
-var english = require('retext-english');
-var equality = require('retext-equality');
+var vfile = require('to-vfile')
+var report = require('vfile-reporter')
+var unified = require('unified')
+var parse = require('remark-parse')
+var stringify = require('remark-stringify')
+var remark2retext = require('remark-retext')
+var english = require('retext-english')
+var equality = require('retext-equality')
 
 unified()
   .use(parse)
-  .use(remark2retext, unified().use(english).use(equality))
+  .use(
+    remark2retext,
+    unified()
+      .use(english)
+      .use(equality)
+  )
   .use(stringify)
-  .process(vfile.readSync('example.md'), function (err, file) {
-    console.error(report(err || file));
-  });
+  .process(vfile.readSync('example.md'), function(err, file) {
+    console.error(report(err || file))
+  })
 ```
 
 Now, running `node example` yields:
