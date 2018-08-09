@@ -90,7 +90,7 @@ Passed to [`mdast-util-to-nlcst`][to-nlcst].
 
 ## Contribute
 
-See [`contributing.md` in `remarkjs/remarkj`][contributing] for ways to get
+See [`contributing.md` in `remarkjs/remark`][contributing] for ways to get
 started.
 
 This organisation has a [Code of Conduct][coc].  By interacting with this
