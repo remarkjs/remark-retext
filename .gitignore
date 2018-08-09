@@ -5,3 +5,4 @@ coverage/
 node_modules/
 remark-retext.js
 remark-retext.min.js
+yarn.lock
