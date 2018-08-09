@@ -1,4 +1,4 @@
-# remark-retext [![Build Status][travis-badge]][travis] [![Coverage Status][codecov-badge]][codecov]
+# remark-retext [![Build Status][travis-badge]][travis] [![Coverage Status][codecov-badge]][codecov] [![Chat][chat-badge]][chat]
 
 Bridge / mutate from [**remark**][remark] to [**retext**][retext].
 
@@ -109,6 +109,10 @@ repository, organisation, or community you agree to abide by its terms.
 [codecov-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-retext.svg
 
 [codecov]: https://codecov.io/github/remarkjs/remark-retext
+
+[chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
+
+[chat]: https://gitter.im/remarkjs/Lobby
 
 [npm]: https://docs.npmjs.com/cli/install
 
