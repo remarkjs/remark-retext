@@ -34,7 +34,7 @@
     "tape": "^4.0.0",
     "tinyify": "^2.4.3",
     "unified": "^7.0.0",
-    "xo": "^0.22.0"
+    "xo": "^0.23.0"
   },
   "scripts": {
     "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
