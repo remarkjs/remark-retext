@@ -87,7 +87,7 @@ Passed to [`mdast-util-to-nlcst`][to-nlcst].
 ## Related
 
 *   [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
-    — Transform HTML ([hast][]) to natural language [nlcst][]
+    — Transform HTML ([hast][]) to natural language ([nlcst][])
 *   [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
     — Transform Markdown ([mdast][]) to HTML ([hast][])
 *   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
