@@ -3,21 +3,22 @@
 [![Build][build-badge]][build]
 [![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
-[![Chat][chat-badge]][chat]
+[![Size][size-badge]][size]
 [![Sponsors][sponsors-badge]][collective]
 [![Backers][backers-badge]][collective]
+[![Chat][chat-badge]][chat]
 
-Bridge / mutate from [**remark**][remark] to [**retext**][retext].
+[**remark**][remark] plugin to bridge or mutate to [**retext**][retext].
 
-## Installation
+## Install
 
 [npm][]:
 
-```bash
+```sh
 npm install remark-retext
 ```
 
-## Usage
+## Use
 
 Say we have the following file, `example.md`:
 
@@ -27,7 +28,7 @@ Say we have the following file, `example.md`:
 
 And our script, `example.js`, looks as follows:
 
-```javascript
+```js
 var vfile = require('to-vfile')
 var report = require('vfile-reporter')
 var unified = require('unified')
@@ -64,21 +65,20 @@ example.md
 
 ### `origin.use(remark2retext, destination[, options])`
 
-Either bridge or mutate from [**remark**][remark] ([MDAST][]) to
-[**retext**][retext] ([NLCST][]).
+[**remark**][remark] ([**mdast**][mdast]) plugin to bridge or mutate to
+[**retext**][retext] ([**nlcst**][nlcst]).
 
 ###### `destination`
 
 `destination` is either a parser or a processor.
 
-If a [`Unified`][processor] processor is given, runs the destination
-processor with the new NLCST tree, then, after running discards that
-tree and continues on running the origin processor with the original
-tree ([bridge-mode][bridge]).
+If a [`Unified`][processor] processor is given, runs the destination processor
+with the new nlcst tree, then, after running discards that tree and continues on
+running the origin processor with the original tree ([*bridge mode*][bridge]).
 
-If a parser (such as [**parse-latin**][latin], [**parse-english**][english],
-or [**parse-dutch**][dutch]) is given, passes the tree to further
-plug-ins (mutate-mode).
+If a parser (such as [`parse-latin`][latin], [`parse-english`][english], or
+[`parse-dutch`][dutch]) is given, passes the tree to further plugins
+(*mutate mode*).
 
 ###### `options`
 
@@ -87,21 +87,23 @@ Passed to [`mdast-util-to-nlcst`][to-nlcst].
 ## Related
 
 *   [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
-    — Transform HTML to [NLCST][]
+    — Transform HTML ([hast][]) to natural language [nlcst][]
 *   [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
-    — Transform markdown to HTML
+    — Transform Markdown ([mdast][]) to HTML ([hast][])
 *   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
-    — Transform HTML to markdown
+    — Transform HTML ([hast][]) to Markdown ([mdast][])
 *   [`mdast-util-to-nlcst`][to-nlcst]
     — Underlying algorithm
 
 ## Contribute
 
-See [`contributing.md` in `remarkjs/remark`][contributing] for ways to get
-started.
+See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
+to get started.
+See [`support.md`][support] for ways to get help.
 
-This organisation has a [Code of Conduct][coc].  By interacting with this
-repository, organisation, or community you agree to abide by its terms.
+This project has a [Code of Conduct][coc].
+By interacting with this repository, organisation, or community you agree to
+abide by its terms.
 
 ## License
 
@@ -109,7 +111,7 @@ repository, organisation, or community you agree to abide by its terms.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/remarkjs/remark-retext.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark-retext/master.svg
 
 [build]: https://travis-ci.org/remarkjs/remark-retext
 
@@ -121,9 +123,9 @@ repository, organisation, or community you agree to abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/remark-retext
 
-[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+[size-badge]: https://img.shields.io/bundlephobia/minzip/remark-retext.svg
 
-[chat]: https://spectrum.chat/unified/remark
+[size]: https://bundlephobia.com/result?p=remark-retext
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
@@ -131,13 +133,23 @@ repository, organisation, or community you agree to abide by its terms.
 
 [collective]: https://opencollective.com/unified
 
+[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+
+[chat]: https://spectrum.chat/unified/remark
+
 [npm]: https://docs.npmjs.com/cli/install
+
+[health]: https://github.com/remarkjs/.github
+
+[contributing]: https://github.com/remarkjs/.github/blob/master/contributing.md
+
+[support]: https://github.com/remarkjs/.github/blob/master/support.md
+
+[coc]: https://github.com/remarkjs/.github/blob/master/code-of-conduct.md
 
 [license]: license
 
 [author]: https://wooorm.com
-
-[mdast]: https://github.com/syntax-tree/mdast
 
 [remark]: https://github.com/remarkjs/remark
 
@@ -147,7 +159,11 @@ repository, organisation, or community you agree to abide by its terms.
 
 [bridge]: https://github.com/unifiedjs/unified#processing-between-syntaxes
 
+[mdast]: https://github.com/syntax-tree/mdast
+
 [nlcst]: https://github.com/syntax-tree/nlcst
+
+[hast]: https://github.com/syntax-tree/hast
 
 [latin]: https://github.com/wooorm/parse-latin
 
@@ -156,7 +172,3 @@ repository, organisation, or community you agree to abide by its terms.
 [dutch]: https://github.com/wooorm/parse-dutch
 
 [to-nlcst]: https://github.com/syntax-tree/mdast-util-to-nlcst
-
-[contributing]: https://github.com/remarkjs/remark/blob/master/contributing.md
-
-[coc]: https://github.com/remarkjs/remark/blob/master/code-of-conduct.md
