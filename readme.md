@@ -84,6 +84,12 @@ If a parser (such as [`parse-latin`][latin], [`parse-english`][english], or
 
 Passed to [`mdast-util-to-nlcst`][to-nlcst].
 
+## Security
+
+Use of `remark-retext` does not involve [**rehype**][rehype] ([**hast**][hast])
+or user content so there are no openings for [cross-site scripting (XSS)][xss]
+attacks.
+
 ## Related
 
 *   [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
@@ -172,3 +178,7 @@ abide by its terms.
 [dutch]: https://github.com/wooorm/parse-dutch
 
 [to-nlcst]: https://github.com/syntax-tree/mdast-util-to-nlcst
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[rehype]: https://github.com/rehypejs/rehype
