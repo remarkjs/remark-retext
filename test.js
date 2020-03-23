@@ -8,7 +8,7 @@ var markdown = require('remark-stringify')
 var naturalLanguage = require('retext-stringify')
 var remark2retext = require('.')
 
-test('remark2retext()', function(t) {
+test('remark2retext()', function (t) {
   t.equal(
     unified()
       .use(parse)
