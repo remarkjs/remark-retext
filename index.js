@@ -31,8 +31,8 @@ function bridge(destination, options) {
     var Parser = destination.freeze().Parser
     var tree = mdast2nlcst(node, file, Parser, options)
     destination.run(tree, file, done)
-    function done(err) {
-      next(err)
+    function done(error) {
+      next(error)
     }
   }
 }
