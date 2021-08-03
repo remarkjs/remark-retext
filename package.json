@@ -37,14 +37,14 @@
   "devDependencies": {
     "c8": "^7.0.0",
     "prettier": "^2.0.0",
-    "remark-cli": "^9.0.0",
-    "remark-parse": "^9.0.0",
+    "remark-cli": "^10.0.0",
+    "remark-parse": "^10.0.0",
     "remark-preset-wooorm": "^8.0.0",
-    "remark-stringify": "^9.0.0",
-    "retext-english": "^3.0.0",
-    "retext-stringify": "^2.0.0",
+    "remark-stringify": "^10.0.0",
+    "retext-english": "^4.0.0",
+    "retext-stringify": "^3.0.0",
     "tape": "^5.0.0",
-    "unified": "^9.0.0",
+    "unified": "^10.0.0",
     "xo": "^0.37.0"
   },
   "scripts": {

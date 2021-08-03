@@ -1,7 +1,7 @@
 import test from 'tape'
-import unified from 'unified'
+import {unified} from 'unified'
 import remarkParse from 'remark-parse'
-import retextEnglish from 'retext-english'
+import retextEnglish, {Parser as RetextEnglish} from 'retext-english'
 import remarkStringify from 'remark-stringify'
 import retextStringify from 'retext-stringify'
 import remarkRetext from './index.js'
@@ -10,7 +10,7 @@ test('remarkRetext', function (t) {
   t.equal(
     unified()
       .use(remarkParse)
-      .use(remarkRetext, retextEnglish.Parser)
+      .use(remarkRetext, RetextEnglish)
       .use(retextStringify)
       .processSync('## Hello, world! ##')
       .toString(),
