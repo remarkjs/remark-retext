@@ -50,9 +50,7 @@ export default remarkRetext
 function mutate(parser, options) {
   // Assume the parser is a retext parser.
   const Parser = /** @type {ParserInstance|ParserConstructor} */ (parser)
-  return (node, file) => {
-    return toNlcst(node, file, Parser, options)
-  }
+  return (node, file) => toNlcst(node, file, Parser, options)
 }
 
 /**
