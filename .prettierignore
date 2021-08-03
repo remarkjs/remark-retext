@@ -1,5 +1,2 @@
 coverage/
-remark-retext.js
-remark-retext.min.js
-*.json
 *.md
