@@ -1,4 +1,4 @@
-import mdast2nlcst from 'mdast-util-to-nlcst'
+import {toNlcst} from 'mdast-util-to-nlcst'
 
 // Attacher.
 // If a destination processor is given, runs the destination with the new nlcst
@@ -15,7 +15,7 @@ export default function remarkRetext(destination, options) {
 function mutate(parser, options) {
   return transformer
   function transformer(node, file) {
-    return mdast2nlcst(node, file, parser, options)
+    return toNlcst(node, file, parser, options)
   }
 }
 
@@ -25,7 +25,7 @@ function bridge(destination, options) {
   return transformer
   function transformer(node, file, next) {
     var Parser = destination.freeze().Parser
-    var tree = mdast2nlcst(node, file, Parser, options)
+    var tree = toNlcst(node, file, Parser, options)
     destination.run(tree, file, done)
     function done(error) {
       next(error)

@@ -32,7 +32,7 @@
     "index.js"
   ],
   "dependencies": {
-    "mdast-util-to-nlcst": "^4.0.0"
+    "mdast-util-to-nlcst": "^5.0.0"
   },
   "devDependencies": {
     "c8": "^7.0.0",
