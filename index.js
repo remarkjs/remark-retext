@@ -6,7 +6,7 @@ import {toNlcst} from 'mdast-util-to-nlcst'
 // If a parser is given, returns the nlcst tree: further plugins run on that
 // tree (mutate mode).
 export default function remarkRetext(destination, options) {
-  var fn = destination && destination.run ? bridge : mutate
+  const fn = destination && destination.run ? bridge : mutate
   return fn(destination, options)
 }
 
@@ -24,8 +24,8 @@ function mutate(parser, options) {
 function bridge(destination, options) {
   return transformer
   function transformer(node, file, next) {
-    var Parser = destination.freeze().Parser
-    var tree = toNlcst(node, file, Parser, options)
+    const Parser = destination.freeze().Parser
+    const tree = toNlcst(node, file, Parser, options)
     destination.run(tree, file, done)
     function done(error) {
       next(error)

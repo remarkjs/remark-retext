@@ -6,7 +6,7 @@ import remarkStringify from 'remark-stringify'
 import retextStringify from 'retext-stringify'
 import remarkRetext from './index.js'
 
-test('remarkRetext', function (t) {
+test('remarkRetext', (t) => {
   t.equal(
     unified()
       .use(remarkParse)
