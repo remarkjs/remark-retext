@@ -1,19 +1,17 @@
-'use strict'
+import test from 'tape'
+import unified from 'unified'
+import remarkParse from 'remark-parse'
+import retextEnglish from 'retext-english'
+import remarkStringify from 'remark-stringify'
+import retextStringify from 'retext-stringify'
+import remarkRetext from './index.js'
 
-var test = require('tape')
-var unified = require('unified')
-var parse = require('remark-parse')
-var english = require('retext-english')
-var markdown = require('remark-stringify')
-var naturalLanguage = require('retext-stringify')
-var remark2retext = require('.')
-
-test('remark2retext()', function (t) {
+test('remarkRetext', function (t) {
   t.equal(
     unified()
-      .use(parse)
-      .use(remark2retext, english.Parser)
-      .use(naturalLanguage)
+      .use(remarkParse)
+      .use(remarkRetext, retextEnglish.Parser)
+      .use(retextStringify)
       .processSync('## Hello, world! ##')
       .toString(),
     'Hello, world!',
@@ -22,9 +20,9 @@ test('remark2retext()', function (t) {
 
   t.equal(
     unified()
-      .use(parse)
-      .use(remark2retext, unified().use(english))
-      .use(markdown)
+      .use(remarkParse)
+      .use(remarkRetext, unified().use(retextEnglish))
+      .use(remarkStringify)
       .processSync('## Hello, world! ##')
       .toString(),
     '## Hello, world!\n',
