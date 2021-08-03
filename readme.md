@@ -18,6 +18,9 @@ No change is needed: it works exactly the same now as it did previously!
 
 ## Install
 
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
+Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
+
 [npm][]:
 
 ```sh
@@ -35,26 +38,24 @@ Say we have the following file, `example.md`:
 And our script, `example.js`, looks as follows:
 
 ```js
-var vfile = require('to-vfile')
-var report = require('vfile-reporter')
-var unified = require('unified')
-var parse = require('remark-parse')
-var stringify = require('remark-stringify')
-var remark2retext = require('remark-retext')
-var english = require('retext-english')
-var equality = require('retext-equality')
+import {readSync} from 'to-vfile'
+import {reporter} from 'vfile-reporter'
+import {unified} from 'unified'
+import remarkParse from 'remark-parse'
+import remarkStringify from 'remark-stringify'
+import remarkRetext from 'remark-retext'
+import retextEnglish from 'retext-english'
+import retextEquality from 'retext-equality'
+
+const file = readSync('example.md')
 
 unified()
-  .use(parse)
-  .use(
-    remark2retext,
-    unified()
-      .use(english)
-      .use(equality)
-  )
-  .use(stringify)
-  .process(vfile.readSync('example.md'), function(err, file) {
-    console.error(report(err || file))
+  .use(remarkParse)
+  .use(remarkRetext, unified().use(retextEnglish).use(retextEquality))
+  .use(remarkStringify)
+  .process(file)
+  .then((file) => {
+    console.error(reporter(file))
   })
 ```
 
@@ -62,14 +63,17 @@ Now, running `node example` yields:
 
 ```text
 example.md
-  1:10-1:14  warning  `guys` may be insensitive, use `people`, `persons`, `folks` instead  gals-men  retext-equality
+  1:10-1:14  warning  `guys` may be insensitive, use `people`, `persons`, `folks` instead  gals-man  retext-equality
 
 ⚠ 1 warning
 ```
 
 ## API
 
-### `origin.use(remark2retext, destination[, options])`
+This package exports no identifiers.
+The default export is `remarkRetext`.
+
+### `unified().use(remarkRetext, destination[, options])`
 
 [**remark**][remark] ([**mdast**][mdast]) plugin to bridge or mutate to
 [**retext**][retext] ([**nlcst**][nlcst]).
