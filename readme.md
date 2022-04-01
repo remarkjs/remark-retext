@@ -60,17 +60,17 @@ In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 npm install remark-retext
 ```
 
-In Deno with [Skypack][]:
+In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import remarkRetext from 'https://cdn.skypack.dev/remark-retext@5?dts'
+import remarkRetext from 'https://esm.sh/remark-retext@5'
 ```
 
-In browsers with [Skypack][]:
+In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import remarkRetext from 'https://cdn.skypack.dev/remark-retext@5?min'
+  import remarkRetext from 'https://esm.sh/remark-retext@5?bundle'
 </script>
 ```
 
@@ -279,7 +279,7 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[skypack]: https://www.skypack.dev
+[esmsh]: https://esm.sh
 
 [health]: https://github.com/remarkjs/.github
 
