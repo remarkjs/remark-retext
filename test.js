@@ -1,14 +1,20 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import {unified} from 'unified'
 import {ParseEnglish} from 'parse-english'
 import remarkParse from 'remark-parse'
-import retextEnglish from 'retext-english'
 import remarkStringify from 'remark-stringify'
+import retextEnglish from 'retext-english'
 import retextStringify from 'retext-stringify'
+import {unified} from 'unified'
 import remarkRetext from './index.js'
 
 test('remarkRetext', async function (t) {
+  await t.test('should expose the public api', async function () {
+    assert.deepEqual(Object.keys(await import('./index.js')).sort(), [
+      'default'
+    ])
+  })
+
   await t.test('should throw when w/o parser or processor', async function () {
     assert.throws(function () {
       // @ts-expect-error: check how missing options is handled.
