@@ -2,15 +2,15 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {ParseEnglish} from 'parse-english'
 import remarkParse from 'remark-parse'
+import remarkRetext from 'remark-retext'
 import remarkStringify from 'remark-stringify'
 import retextEnglish from 'retext-english'
 import retextStringify from 'retext-stringify'
 import {unified} from 'unified'
-import remarkRetext from './index.js'
 
 test('remarkRetext', async function (t) {
   await t.test('should expose the public api', async function () {
-    assert.deepEqual(Object.keys(await import('./index.js')).sort(), [
+    assert.deepEqual(Object.keys(await import('remark-retext')).sort(), [
       'default'
     ])
   })
