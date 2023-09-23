@@ -35,7 +35,7 @@ test('remarkRetext', async function (t) {
   await t.test('should bridge', async function () {
     const file = await unified()
       .use(remarkParse)
-      // @ts-expect-error: to do.
+      // @ts-expect-error: TS barfs on overloads that result in bridges.
       .use(remarkRetext, unified().use(retextEnglish))
       .use(remarkStringify)
       .process('## Hello, world! ##')
