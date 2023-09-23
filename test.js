@@ -19,7 +19,7 @@ test('remarkRetext', async function (t) {
     assert.throws(function () {
       // @ts-expect-error: check how missing options is handled.
       unified().use(remarkRetext).freeze()
-    }, /Expected `parser` \(such as from `parse-english`\) or `processor` \(a unified pipeline\) as `parserOrProcessor`/)
+    }, /Expected `parser` \(such as from `parse-english`\) or `processor` \(a unified pipeline\) as `destination`/)
   })
 
   await t.test('should mutate', async function () {

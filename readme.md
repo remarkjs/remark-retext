@@ -18,8 +18,7 @@
 *   [Use](#use)
 *   [API](#api)
     *   [`unified().use(remarkRetext, destination[, options])`](#unifieduseremarkretext-destination-options)
-*   [Examples](#examples)
-*   [Example: mutate mode](#example-mutate-mode)
+    *   [`Options`](#options)
 *   [Types](#types)
 *   [Compatibility](#compatibility)
 *   [Security](#security)
@@ -31,14 +30,6 @@
 
 This package is a [unified][] ([remark][]) plugin to support [retext][].
 
-**unified** is a project that transforms content with abstract syntax trees
-(ASTs).
-**remark** adds support for markdown to unified.
-**retext** adds support for natural language to unified.
-**mdast** is the markdown AST that remark uses.
-**nlcst** is the natural language AST that retext uses.
-This is a remark plugin that transforms mdast into nlcst to support retext.
-
 ## When should I use this?
 
 This project is useful if you want to check natural language in markdown.
@@ -48,13 +39,18 @@ and `an` are used correctly, or [`retext-readability`][retext-readability] which
 checks that sentences are not too complex.
 This plugins lets you use them on markdown documents.
 
-This plugin is unfortunately not able to apply changes by retext plugins (such
+This plugin is not able to apply changes by retext plugins (such
 as done by `retext-smartypants`) to the markdown content.
+
+This plugin is built on [`mdast-util-to-nlcst`][mdast-util-to-nlcst], which does
+the work on syntax trees.
+remark focusses on making it easier to transform content by abstracting such
+internals away.
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
-In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
+This package is [ESM only][esm].
+In Node.js (version 16+), install with [npm][]:
 
 ```sh
 npm install remark-retext
@@ -76,42 +72,38 @@ In browsers with [`esm.sh`][esmsh]:
 
 ## Use
 
-Say we have the following file, `example.md`:
+Say we have the following file `example.md`:
 
 ```markdown
 ## Hello guys!
 ```
 
-And our script, `example.js`, looks as follows:
+…and a module `example.js`:
 
 ```js
-import {read} from 'to-vfile'
-import {reporter} from 'vfile-reporter'
-import {unified} from 'unified'
 import remarkParse from 'remark-parse'
-import remarkStringify from 'remark-stringify'
 import remarkRetext from 'remark-retext'
+import remarkStringify from 'remark-stringify'
 import retextEnglish from 'retext-english'
 import retextEquality from 'retext-equality'
+import {read} from 'to-vfile'
+import {unified} from 'unified'
+import {reporter} from 'vfile-reporter'
 
-main()
+const file = await unified()
+  .use(remarkParse)
+  .use(remarkRetext, unified().use(retextEnglish).use(retextEquality))
+  .use(remarkStringify)
+  .process(await read('example.md'))
 
-async function main() {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkRetext, unified().use(retextEnglish).use(retextEquality))
-    .use(remarkStringify)
-    .process(await read('example.md'))
-
-  console.error(reporter(file))
-}
+console.error(reporter(file))
 ```
 
-Now, running `node example` yields:
+…then running `node example.js` yields:
 
 ```text
 example.md
-  1:10-1:14  warning  `guys` may be insensitive, use `people`, `persons`, `folks` instead  gals-man  retext-equality
+1:10-1:14 warning Unexpected potentially insensitive use of `guys`, in somes cases `people`, `persons`, `folks` may be better gals-man retext-equality
 
 ⚠ 1 warning
 ```
@@ -119,121 +111,81 @@ example.md
 ## API
 
 This package exports no identifiers.
-The default export is `remarkRetext`.
+The default export is [`remarkRetext`][api-remark-retext].
 
 ### `unified().use(remarkRetext, destination[, options])`
 
-**[remark][]** plugin to support **[retext][]**.
+Bridge or mutate to retext.
 
-##### `destination`
+###### Parameters
 
-`destination` is either a parser or a processor.
+*   `destination` ([`Parser`][unified-parser] or
+    [`Processor`][unified-processor])
+    — configuration (required)
 
-*   If a destination [processor][] is given, runs the plugins attached to it
-    with the new nlcst tree ([*bridge mode*][bridge]).
-    This given processor must have a parser attached (this can be done by using
-    the plugin `retext-english` or similar) and should use other retext plugins
-*   If a parser is given, runs further plugins attached to the same processor
-    with the new tree (*mutate mode*).
-    Such parsers are exported by packages like `retext-english` as `Parser`.
-    You should use other retext plugins after `remark-retext`.
+###### Returns
 
-##### `options`
+Transform ([`Transformer`][unified-transformer]).
 
-Configuration (`Object`, optional).
+###### Notes
 
-###### `options.ignore`
+*   if a [processor][unified-processor] is given, uses its parser to create a
+    new nlcst tree, then runs the plugins attached to with that
+    (*[bridge mode][unified-mode]*); you can add a parser to processor for
+    example with `retext-english`; other plugins used on the processor should
+    be retext plugins
+*   if a [parser][unified-parser] is given, uses it to create a new nlcst tree,
+    and returns it (*[mutate mode][unified-mode]*); you can get a parser by
+    importing `Parser` from `retext-english` for example;  other plugins used
+    after `remarkRetext` should be retext plugins
 
-List of [mdast][] node types to ignore (`Array.<string>`).
-The types `'table'`, `'tableRow'`, and `'tableCell'` are always ignored.
+### `Options`
 
-###### `options.source`
+Configuration (TypeScript type).
 
-List of [mdast][] node types to mark as [nlcst][] source nodes
-(`Array.<string>`).
-`'inlineCode'` is always marked as source.
+###### Fields
 
-## Examples
-
-## Example: mutate mode
-
-The previous example was using *bridge* mode: the markdown AST remained for
-other plugins after `remark-retext`.
-This example uses *mutate* mode: the markdown AST is discarded and the natural
-language AST.
-This is not very useful: this is not a good way to get the plain text version
-of a markdown document.
-
-```js
-import {read} from 'to-vfile'
-import {reporter} from 'vfile-reporter'
-import {unified} from 'unified'
-import remarkParse from 'remark-parse'
-import remarkRetext from 'remark-retext'
-import {Parser} from 'retext-english'
-import retextEquality from 'retext-equality'
-import retextStringify from 'retext-stringify'
-
-main()
-
-async function main() {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkRetext, Parser)
-    .use(retextEquality)
-    .use(retextStringify)
-    .process(await read('example.md'))
-
-  console.error(reporter(file))
-  console.log(String(file))
-}
-```
-
-…yields:
-
-```txt
-example.md
-  1:10-1:14  warning  `guys` may be insensitive, use `people`, `persons`, `folks` instead  gals-man  retext-equality
-
-⚠ 1 warning
-```
-
-```txt
-Hello guys!
-```
+*   `options.ignore` (`Array<string>`, optional)
+    — list of [mdast][] node types to ignore;
+    the types `'table'`, `'tableRow'`, and `'tableCell'` are always ignored
+*   `options.source` (`Array<string>`, optional)
+    — list of [mdast][] node types to mark as [nlcst][] source nodes;
+    the type `'inlineCode'` is always marked as source
 
 ## Types
 
 This package is fully typed with [TypeScript][].
-It exports an `Options` type, which specifies the interface of the accepted
-options.
+It exports the additional type [`Options`][api-options].
 
 ## Compatibility
 
-Projects maintained by the unified collective are compatible with all maintained
+Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
-As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
-Our projects sometimes work with older versions, but this is not guaranteed.
+
+When we cut a new major release, we drop support for unmaintained versions of
+Node.
+This means we try to keep the current release line, `remark-retext@^5`,
+compatible with Node.js 12.
 
 This plugin works with `unified` version 6+, `remark` version 3+, and `retext`
 version 7+.
 
 ## Security
 
-Use of `remark-retext` does not involve [**rehype**][rehype] ([**hast**][hast])
-or user content so there are no openings for [cross-site scripting (XSS)][xss]
+Use of `remark-retext` does not involve **[rehype][]** (**[hast][]**) or user
+content so there are no openings for [cross-site scripting (XSS)][wiki-xss]
 attacks.
 
 ## Related
 
 *   [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
-    — Transform HTML ([hast][]) to natural language ([nlcst][])
+    — transform HTML ([hast][]) to natural language ([nlcst][])
 *   [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
-    — Transform Markdown ([mdast][]) to HTML ([hast][])
+    — transform Markdown ([mdast][]) to HTML ([hast][])
 *   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
-    — Transform HTML ([hast][]) to Markdown ([mdast][])
-*   [`mdast-util-to-nlcst`][to-nlcst]
-    — Underlying algorithm
+    — transform HTML ([hast][]) to Markdown ([mdast][])
+*   [`mdast-util-to-nlcst`][mdast-util-to-nlcst]
+    — underlying algorithm
 
 ## Contribute
 
@@ -263,9 +215,9 @@ abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/remark-retext
 
-[size-badge]: https://img.shields.io/bundlephobia/minzip/remark-retext.svg
+[size-badge]: https://img.shields.io/bundlejs/size/remark-retext
 
-[size]: https://bundlephobia.com/result?p=remark-retext
+[size]: https://bundlejs.com/?q=remark-retext
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
@@ -279,44 +231,54 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
 [esmsh]: https://esm.sh
 
 [health]: https://github.com/remarkjs/.github
 
-[contributing]: https://github.com/remarkjs/.github/blob/HEAD/contributing.md
+[contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
 
-[support]: https://github.com/remarkjs/.github/blob/HEAD/support.md
+[support]: https://github.com/remarkjs/.github/blob/main/support.md
 
-[coc]: https://github.com/remarkjs/.github/blob/HEAD/code-of-conduct.md
+[coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
 
 [license]: license
 
 [author]: https://wooorm.com
 
+[hast]: https://github.com/syntax-tree/hast
+
+[mdast]: https://github.com/syntax-tree/mdast
+
+[mdast-util-to-nlcst]: https://github.com/syntax-tree/mdast-util-to-nlcst
+
+[nlcst]: https://github.com/syntax-tree/nlcst
+
+[rehype]: https://github.com/rehypejs/rehype
+
 [remark]: https://github.com/remarkjs/remark
 
 [retext]: https://github.com/retextjs/retext
 
-[unified]: https://github.com/unifiedjs/unified
-
-[processor]: https://github.com/unifiedjs/unified#processor
-
-[bridge]: https://github.com/unifiedjs/unified#processing-between-syntaxes
-
-[mdast]: https://github.com/syntax-tree/mdast
-
-[nlcst]: https://github.com/syntax-tree/nlcst
-
-[hast]: https://github.com/syntax-tree/hast
-
-[to-nlcst]: https://github.com/syntax-tree/mdast-util-to-nlcst
-
-[typescript]: https://www.typescriptlang.org
-
-[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
-
-[rehype]: https://github.com/rehypejs/rehype
-
 [retext-indefinite-article]: https://github.com/retextjs/retext-indefinite-article
 
 [retext-readability]: https://github.com/retextjs/retext-readability
+
+[typescript]: https://www.typescriptlang.org
+
+[unified]: https://github.com/unifiedjs/unified
+
+[unified-mode]: https://github.com/unifiedjs/unified#processing-between-syntaxes
+
+[unified-processor]: https://github.com/unifiedjs/unified#processor
+
+[unified-parser]: https://github.com/unifiedjs/unified#parser
+
+[unified-transformer]: https://github.com/unifiedjs/unified#transformer
+
+[wiki-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[api-options]: #options
+
+[api-remark-retext]: #unifieduseremarkretext-destination-options
