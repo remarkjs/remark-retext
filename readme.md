@@ -59,14 +59,14 @@ npm install remark-retext
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import remarkRetext from 'https://esm.sh/remark-retext@5'
+import remarkRetext from 'https://esm.sh/remark-retext@6'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import remarkRetext from 'https://esm.sh/remark-retext@5?bundle'
+  import remarkRetext from 'https://esm.sh/remark-retext@6?bundle'
 </script>
 ```
 
