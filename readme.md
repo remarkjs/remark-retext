@@ -12,19 +12,19 @@
 
 ## Contents
 
-*   [What is this?](#what-is-this)
-*   [When should I use this?](#when-should-i-use-this)
-*   [Install](#install)
-*   [Use](#use)
-*   [API](#api)
-    *   [`unified().use(remarkRetext, destination[, options])`](#unifieduseremarkretext-destination-options)
-    *   [`Options`](#options)
-*   [Types](#types)
-*   [Compatibility](#compatibility)
-*   [Security](#security)
-*   [Related](#related)
-*   [Contribute](#contribute)
-*   [License](#license)
+* [What is this?](#what-is-this)
+* [When should I use this?](#when-should-i-use-this)
+* [Install](#install)
+* [Use](#use)
+* [API](#api)
+  * [`unified().use(remarkRetext, destination[, options])`](#unifieduseremarkretext-destination-options)
+  * [`Options`](#options)
+* [Types](#types)
+* [Compatibility](#compatibility)
+* [Security](#security)
+* [Related](#related)
+* [Contribute](#contribute)
+* [License](#license)
 
 ## What is this?
 
@@ -119,9 +119,9 @@ Bridge or mutate to retext.
 
 ###### Parameters
 
-*   `destination` ([`Parser`][unified-parser] or
-    [`Processor`][unified-processor])
-    — configuration (required)
+* `destination` ([`Parser`][unified-parser] or
+  [`Processor`][unified-processor])
+  — configuration (required)
 
 ###### Returns
 
@@ -129,15 +129,15 @@ Transform ([`Transformer`][unified-transformer]).
 
 ###### Notes
 
-*   if a [processor][unified-processor] is given, uses its parser to create a
-    new nlcst tree, then runs the plugins attached to with that
-    (*[bridge mode][unified-mode]*); you can add a parser to processor for
-    example with `retext-english`; other plugins used on the processor should
-    be retext plugins
-*   if a [parser][unified-parser] is given, uses it to create a new nlcst tree,
-    and returns it (*[mutate mode][unified-mode]*); you can get a parser by
-    importing `Parser` from `retext-english` for example;  other plugins used
-    after `remarkRetext` should be retext plugins
+* if a [processor][unified-processor] is given, uses its parser to create a
+  new nlcst tree, then runs the plugins attached to with that
+  (*[bridge mode][unified-mode]*); you can add a parser to processor for
+  example with `retext-english`; other plugins used on the processor should
+  be retext plugins
+* if a [parser][unified-parser] is given, uses it to create a new nlcst tree,
+  and returns it (*[mutate mode][unified-mode]*); you can get a parser by
+  importing `Parser` from `retext-english` for example;  other plugins used
+  after `remarkRetext` should be retext plugins
 
 ### `Options`
 
@@ -145,12 +145,12 @@ Configuration (TypeScript type).
 
 ###### Fields
 
-*   `options.ignore` (`Array<string>`, optional)
-    — list of [mdast][] node types to ignore;
-    the types `'table'`, `'tableRow'`, and `'tableCell'` are always ignored
-*   `options.source` (`Array<string>`, optional)
-    — list of [mdast][] node types to mark as [nlcst][] source nodes;
-    the type `'inlineCode'` is always marked as source
+* `options.ignore` (`Array<string>`, optional)
+  — list of [mdast][] node types to ignore;
+  the types `'table'`, `'tableRow'`, and `'tableCell'` are always ignored
+* `options.source` (`Array<string>`, optional)
+  — list of [mdast][] node types to mark as [nlcst][] source nodes;
+  the type `'inlineCode'` is always marked as source
 
 ## Types
 
@@ -178,14 +178,14 @@ attacks.
 
 ## Related
 
-*   [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
-    — transform HTML ([hast][]) to natural language ([nlcst][])
-*   [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
-    — transform Markdown ([mdast][]) to HTML ([hast][])
-*   [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
-    — transform HTML ([hast][]) to Markdown ([mdast][])
-*   [`mdast-util-to-nlcst`][mdast-util-to-nlcst]
-    — underlying algorithm
+* [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
+  — transform HTML ([hast][]) to natural language ([nlcst][])
+* [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
+  — transform Markdown ([mdast][]) to HTML ([hast][])
+* [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
+  — transform HTML ([hast][]) to Markdown ([mdast][])
+* [`mdast-util-to-nlcst`][mdast-util-to-nlcst]
+  — underlying algorithm
 
 ## Contribute
 
