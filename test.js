@@ -17,7 +17,6 @@ test('remarkRetext', async function (t) {
 
   await t.test('should throw when w/o parser or processor', async function () {
     assert.throws(function () {
-      // @ts-expect-error: check how missing options is handled.
       unified().use(remarkRetext).freeze()
     }, /Expected `parser` \(such as from `parse-english`\) or `processor` \(a unified pipeline\) as `destination`/)
   })
@@ -35,7 +34,6 @@ test('remarkRetext', async function (t) {
   await t.test('should bridge', async function () {
     const file = await unified()
       .use(remarkParse)
-      // @ts-expect-error: TS barfs on overloads that result in bridges.
       .use(remarkRetext, unified().use(retextEnglish))
       .use(remarkStringify)
       .process('## Hello, world! ##')
