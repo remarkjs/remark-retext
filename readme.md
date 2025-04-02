@@ -1,14 +1,12 @@
 # remark-retext
 
-[![Build][build-badge]][build]
-[![Coverage][coverage-badge]][coverage]
-[![Downloads][downloads-badge]][downloads]
-[![Size][size-badge]][size]
-[![Sponsors][sponsors-badge]][collective]
-[![Backers][backers-badge]][collective]
-[![Chat][chat-badge]][chat]
+[![Build][badge-build-image]][badge-build-url]
+[![Coverage][badge-coverage-image]][badge-coverage-url]
+[![Downloads][badge-downloads-image]][badge-downloads-url]
+[![Size][badge-size-image]][badge-size-url]
 
-**[remark][]** plugin to support **[retext][]**.
+**[remark][github-remark]** plugin to support
+**[retext][github-retext]**.
 
 ## Contents
 
@@ -28,29 +26,31 @@
 
 ## What is this?
 
-This package is a [unified][] ([remark][]) plugin to support [retext][].
+This package is a [unified][github-unified] ([remark][github-remark]) plugin to
+support [retext][github-retext].
 
 ## When should I use this?
 
 This project is useful if you want to check natural language in markdown.
 The retext ecosystem has many useful plugins to check prose, such as
-[`retext-indefinite-article`][retext-indefinite-article] which checks that `a`
-and `an` are used correctly, or [`retext-readability`][retext-readability] which
-checks that sentences are not too complex.
+[`retext-indefinite-article`][github-retext-indefinite-article]
+which checks that `a` and `an` are used correctly,
+or [`retext-readability`][github-retext-readability] which checks that sentences
+are not too complex.
 This plugins lets you use them on markdown documents.
 
 This plugin is not able to apply changes by retext plugins (such
 as done by `retext-smartypants`) to the markdown content.
 
-This plugin is built on [`mdast-util-to-nlcst`][mdast-util-to-nlcst], which does
-the work on syntax trees.
+This plugin is built on [`mdast-util-to-nlcst`][github-mdast-util-to-nlcst],
+which does the work on syntax trees.
 remark focusses on making it easier to transform content by abstracting such
 internals away.
 
 ## Install
 
-This package is [ESM only][esm].
-In Node.js (version 16+), install with [npm][]:
+This package is [ESM only][github-gist-esm].
+In Node.js (version 16+), install with [npm][npmjs-install]:
 
 ```sh
 npm install remark-retext
@@ -119,23 +119,24 @@ Bridge or mutate to retext.
 
 ###### Parameters
 
-* `destination` ([`Parser`][unified-parser] or
-  [`Processor`][unified-processor])
+* `destination` ([`Parser`][github-unified-parser] or
+  [`Processor`][github-unified-processor])
   — configuration (required)
 
 ###### Returns
 
-Transform ([`Transformer`][unified-transformer]).
+Transform ([`Transformer`][github-unified-transformer]).
 
 ###### Notes
 
-* if a [processor][unified-processor] is given, uses its parser to create a
-  new nlcst tree, then runs the plugins attached to with that
-  (*[bridge mode][unified-mode]*); you can add a parser to processor for
+* if a [processor][github-unified-processor] is given, uses its parser to
+  create a new nlcst tree, then runs the plugins attached to with that
+  (*[bridge mode][github-unified-mode]*); you can add a parser to processor for
   example with `retext-english`; other plugins used on the processor should
   be retext plugins
-* if a [parser][unified-parser] is given, uses it to create a new nlcst tree,
-  and returns it (*[mutate mode][unified-mode]*); you can get a parser by
+* if a [parser][github-unified-parser] is given, uses it to create a new nlcst
+  tree,
+  and returns it (*[mutate mode][github-unified-mode]*); you can get a parser by
   importing `Parser` from `retext-english` for example;  other plugins used
   after `remarkRetext` should be retext plugins
 
@@ -146,10 +147,11 @@ Configuration (TypeScript type).
 ###### Fields
 
 * `options.ignore` (`Array<string>`, optional)
-  — list of [mdast][] node types to ignore;
+  — list of [mdast][github-mdast] node types to ignore;
   the types `'table'`, `'tableRow'`, and `'tableCell'` are always ignored
 * `options.source` (`Array<string>`, optional)
-  — list of [mdast][] node types to mark as [nlcst][] source nodes;
+  — list of [mdast][github-mdast] node types to mark as [nlcst][github-nlcst]
+  source nodes;
   the type `'inlineCode'` is always marked as source
 
 ## Types
@@ -172,113 +174,106 @@ version 7+.
 
 ## Security
 
-Use of `remark-retext` does not involve **[rehype][]** (**[hast][]**) or user
-content so there are no openings for [cross-site scripting (XSS)][wiki-xss]
+Use of `remark-retext` does not involve **[rehype][github-rehype]**
+(**[hast][github-hast]**) or user
+content so there are no openings for
+[cross-site scripting (XSS)][wikipedia-xss]
 attacks.
 
 ## Related
 
 * [`rehype-retext`](https://github.com/rehypejs/rehype-retext)
-  — transform HTML ([hast][]) to natural language ([nlcst][])
+  — transform HTML ([hast][github-hast]) to natural language
+  ([nlcst][github-nlcst])
 * [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
-  — transform Markdown ([mdast][]) to HTML ([hast][])
+  — transform Markdown ([mdast][github-mdast]) to HTML ([hast][github-hast])
 * [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
-  — transform HTML ([hast][]) to Markdown ([mdast][])
-* [`mdast-util-to-nlcst`][mdast-util-to-nlcst]
+  — transform HTML ([hast][github-hast]) to Markdown ([mdast][github-mdast])
+* [`mdast-util-to-nlcst`][github-mdast-util-to-nlcst]
   — underlying algorithm
 
 ## Contribute
 
-See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
-to get started.
-See [`support.md`][support] for ways to get help.
+See [`contributing.md`][health-contributing] in [`remarkjs/.github`][health] for
+ways to get started.
+See [`support.md`][health-support] for ways to get help.
 
-This project has a [code of conduct][coc].
+This project has a [code of conduct][health-coc].
 By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 ## License
 
-[MIT][license] © [Titus Wormer][author]
+[MIT][file-license] © [Titus Wormer][wooorm]
 
 <!-- Definitions -->
-
-[build-badge]: https://github.com/remarkjs/remark-retext/workflows/main/badge.svg
-
-[build]: https://github.com/remarkjs/remark-retext/actions
-
-[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-retext.svg
-
-[coverage]: https://codecov.io/github/remarkjs/remark-retext
-
-[downloads-badge]: https://img.shields.io/npm/dm/remark-retext.svg
-
-[downloads]: https://www.npmjs.com/package/remark-retext
-
-[size-badge]: https://img.shields.io/bundlejs/size/remark-retext
-
-[size]: https://bundlejs.com/?q=remark-retext
-
-[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
-
-[backers-badge]: https://opencollective.com/unified/backers/badge.svg
-
-[collective]: https://opencollective.com/unified
-
-[chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg
-
-[chat]: https://github.com/remarkjs/remark/discussions
-
-[npm]: https://docs.npmjs.com/cli/install
-
-[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
-
-[esmsh]: https://esm.sh
-
-[health]: https://github.com/remarkjs/.github
-
-[contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
-
-[support]: https://github.com/remarkjs/.github/blob/main/support.md
-
-[coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
-
-[license]: license
-
-[author]: https://wooorm.com
-
-[hast]: https://github.com/syntax-tree/hast
-
-[mdast]: https://github.com/syntax-tree/mdast
-
-[mdast-util-to-nlcst]: https://github.com/syntax-tree/mdast-util-to-nlcst
-
-[nlcst]: https://github.com/syntax-tree/nlcst
-
-[rehype]: https://github.com/rehypejs/rehype
-
-[remark]: https://github.com/remarkjs/remark
-
-[retext]: https://github.com/retextjs/retext
-
-[retext-indefinite-article]: https://github.com/retextjs/retext-indefinite-article
-
-[retext-readability]: https://github.com/retextjs/retext-readability
-
-[typescript]: https://www.typescriptlang.org
-
-[unified]: https://github.com/unifiedjs/unified
-
-[unified-mode]: https://github.com/unifiedjs/unified#processing-between-syntaxes
-
-[unified-processor]: https://github.com/unifiedjs/unified#processor
-
-[unified-parser]: https://github.com/unifiedjs/unified#parser
-
-[unified-transformer]: https://github.com/unifiedjs/unified#transformer
-
-[wiki-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
 
 [api-options]: #options
 
 [api-remark-retext]: #unifieduseremarkretext-destination-options
+
+[badge-build-image]: https://github.com/remarkjs/remark-retext/workflows/main/badge.svg
+
+[badge-build-url]: https://github.com/remarkjs/remark-retext/actions
+
+[badge-coverage-image]: https://img.shields.io/codecov/c/github/remarkjs/remark-retext.svg
+
+[badge-coverage-url]: https://codecov.io/github/remarkjs/remark-retext
+
+[badge-downloads-image]: https://img.shields.io/npm/dm/remark-retext.svg
+
+[badge-downloads-url]: https://www.npmjs.com/package/remark-retext
+
+[badge-size-image]: https://img.shields.io/bundlejs/size/remark-retext
+
+[badge-size-url]: https://bundlejs.com/?q=remark-retext
+
+[esmsh]: https://esm.sh
+
+[file-license]: license
+
+[github-gist-esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+[github-hast]: https://github.com/syntax-tree/hast
+
+[github-mdast]: https://github.com/syntax-tree/mdast
+
+[github-mdast-util-to-nlcst]: https://github.com/syntax-tree/mdast-util-to-nlcst
+
+[github-nlcst]: https://github.com/syntax-tree/nlcst
+
+[github-rehype]: https://github.com/rehypejs/rehype
+
+[github-remark]: https://github.com/remarkjs/remark
+
+[github-retext]: https://github.com/retextjs/retext
+
+[github-retext-indefinite-article]: https://github.com/retextjs/retext-indefinite-article
+
+[github-retext-readability]: https://github.com/retextjs/retext-readability
+
+[github-unified]: https://github.com/unifiedjs/unified
+
+[github-unified-mode]: https://github.com/unifiedjs/unified#processing-between-syntaxes
+
+[github-unified-parser]: https://github.com/unifiedjs/unified#parser
+
+[github-unified-processor]: https://github.com/unifiedjs/unified#processor
+
+[github-unified-transformer]: https://github.com/unifiedjs/unified#transformer
+
+[health]: https://github.com/remarkjs/.github
+
+[health-coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
+
+[health-contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
+
+[health-support]: https://github.com/remarkjs/.github/blob/main/support.md
+
+[npmjs-install]: https://docs.npmjs.com/cli/install
+
+[typescript]: https://www.typescriptlang.org
+
+[wikipedia-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[wooorm]: https://wooorm.com
