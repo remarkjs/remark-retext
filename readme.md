@@ -32,8 +32,8 @@ support [retext][github-retext].
 ## When should I use this?
 
 This project is useful if you want to check natural language in markdown.
-The retext ecosystem has many useful plugins to check prose, such as
-[`retext-indefinite-article`][github-retext-indefinite-article]
+The retext ecosystem has many useful plugins to check prose,
+such as [`retext-indefinite-article`][github-retext-indefinite-article]
 which checks that `a` and `an` are used correctly,
 or [`retext-readability`][github-retext-readability] which checks that sentences
 are not too complex.
@@ -50,7 +50,8 @@ internals away.
 ## Install
 
 This package is [ESM only][github-gist-esm].
-In Node.js (version 16+), install with [npm][npmjs-install]:
+In Node.js (version 16+),
+install with [npm][npmjs-install]:
 
 ```sh
 npm install remark-retext
@@ -129,16 +130,17 @@ Transform ([`Transformer`][github-unified-transformer]).
 
 ###### Notes
 
-* if a [processor][github-unified-processor] is given, uses its parser to
-  create a new nlcst tree, then runs the plugins attached to with that
-  (*[bridge mode][github-unified-mode]*); you can add a parser to processor for
-  example with `retext-english`; other plugins used on the processor should
-  be retext plugins
-* if a [parser][github-unified-parser] is given, uses it to create a new nlcst
-  tree,
-  and returns it (*[mutate mode][github-unified-mode]*); you can get a parser by
-  importing `Parser` from `retext-english` for example;  other plugins used
-  after `remarkRetext` should be retext plugins
+* if a [processor][github-unified-processor] is given,
+  uses its parser to create a new nlcst tree,
+  then runs the plugins attached to with that
+  (*[bridge mode][github-unified-mode]*);
+  you can add a parser to processor for example with `parse-english`;
+  other plugins used on the processor should be retext plugins
+* if a [parser][github-unified-parser] is given,
+  uses it to create a new nlcst tree,
+  and returns it (*[mutate mode][github-unified-mode]*);
+  you can get a parser by importing `Parser` from `parse-english` for example;
+  other plugins used after `remarkRetext` should be retext plugins
 
 ### `Options`
 
@@ -146,10 +148,12 @@ Configuration (TypeScript type).
 
 ###### Fields
 
-* `options.ignore` (`Array<string>`, optional)
+* `options.ignore`
+  (`Array<string>`, optional)
   — list of [mdast][github-mdast] node types to ignore;
   the types `'table'`, `'tableRow'`, and `'tableCell'` are always ignored
-* `options.source` (`Array<string>`, optional)
+* `options.source`
+  (`Array<string>`, optional)
   — list of [mdast][github-mdast] node types to mark as [nlcst][github-nlcst]
   source nodes;
   the type `'inlineCode'` is always marked as source
@@ -164,13 +168,15 @@ It exports the additional type [`Options`][api-options].
 Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
 
-When we cut a new major release, we drop support for unmaintained versions of
-Node.
-This means we try to keep the current release line, `remark-retext@^6`,
+When we cut a new major release,
+we drop support for unmaintained versions of Node.
+This means we try to keep the current release line,
+`remark-retext@6`,
 compatible with Node.js 16.
 
-This plugin works with `unified` version 6+, `remark` version 3+, and `retext`
-version 7+.
+This plugin works with `unified` version 6+,
+`remark` version 3+,
+and `retext` version 7+.
 
 ## Security
 
@@ -186,9 +192,9 @@ attacks.
   — transform HTML ([hast][github-hast]) to natural language
   ([nlcst][github-nlcst])
 * [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
-  — transform Markdown ([mdast][github-mdast]) to HTML ([hast][github-hast])
+  — transform markdown ([mdast][github-mdast]) to HTML ([hast][github-hast])
 * [`rehype-remark`](https://github.com/rehypejs/rehype-remark)
-  — transform HTML ([hast][github-hast]) to Markdown ([mdast][github-mdast])
+  — transform HTML ([hast][github-hast]) to markdown ([mdast][github-mdast])
 * [`mdast-util-to-nlcst`][github-mdast-util-to-nlcst]
   — underlying algorithm
 
@@ -199,8 +205,9 @@ ways to get started.
 See [`support.md`][health-support] for ways to get help.
 
 This project has a [code of conduct][health-coc].
-By interacting with this repository, organization, or community you agree to
-abide by its terms.
+By interacting with this repository,
+organization,
+or community you agree to abide by its terms.
 
 ## License
 
